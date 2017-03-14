@@ -19,7 +19,6 @@ ADD https://github.com/amaurer/alarmdecoder/archive/master.zip /tmp/alarmdecoder
 RUN mkdir /var/run/commbus/ && \
 	unzip /tmp/alarmdecoder.zip -d /opt/ && \
 	mkdir /opt/alarmdecoder-settings/ && \
-	touch /opt/alarmdecoder-settings/settings.yml && \
 	ln -s /opt/alarmdecoder-settings/settings.yml /opt/alarmdecoder-master/settings.yml
 
 WORKDIR /opt/alarmdecoder-master/
