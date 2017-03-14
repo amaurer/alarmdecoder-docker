@@ -13,15 +13,14 @@ RUN apt-get install -y \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
+RUN pip install alarmdecoder twilio PyYAML pyusb watchdog pyserial
+
 ADD https://github.com/amaurer/alarmdecoder/archive/master.zip /tmp/alarmdecoder.zip
 RUN mkdir /var/run/commbus/ && \
-	mkdir /opt/settings/ && \
-	mkdir /opt/alarmdecoder/ && \
 	unzip /tmp/alarmdecoder.zip -d /opt/ && \
-	touch /opt/settings/settings.yml
-
-RUN pip install alarmdecoder twilio
-
+	mkdir /opt/alarmdecoder-settings/ && \
+	touch /opt/alarmdecoder-settings/settings.yml && \
+	ln -s /opt/alarmdecoder-settings/settings.yml /opt/alarmdecoder-master/settings.yml
 
 WORKDIR /opt/alarmdecoder-master/
-CMD ["alarm.py"]
+CMD ["./alarm.py"]
