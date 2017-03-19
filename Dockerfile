@@ -1,4 +1,3 @@
-# FROM resin/rpi-raspbian:wheezy-20170309
 FROM sdhibit/rpi-raspbian
 
 RUN apt-get update && \
